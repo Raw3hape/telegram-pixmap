@@ -1,0 +1,45 @@
+apps:
+  - script: ./dist/server.js
+    name: telegram-pixmap
+    node_args: --nouse-idle-notification --expose-gc
+    env:
+      NODE_ENV: production
+      PORT: 8080
+      HOST: 0.0.0.0
+      
+      # Railway will auto-fill these
+      REDIS_URL: ${REDIS_URL}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PW: ${MYSQL_PW}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      
+      # Security
+      SESSION_SECRET: ${SESSION_SECRET}
+      USE_XREALIP: 1
+      
+      # Disable captcha for Telegram users
+      CAPTCHA_TIME: -1
+      USE_PROXYCHECK: 0
+      
+      # Canvas settings
+      BACKUP_DIR: ""
+      BACKUP_URL: ""
+      HOURLY_EVENT: 0
+      
+      # Telegram specific
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_WEBAPP_URL: ${TELEGRAM_WEBAPP_URL}
+      
+      # Disable other social logins
+      USE_MAILER: 0
+      DISCORD_CLIENT_ID: ""
+      DISCORD_CLIENT_SECRET: ""
+      GOOGLE_CLIENT_ID: ""
+      GOOGLE_CLIENT_SECRET: ""
+      FACEBOOK_APP_ID: ""
+      FACEBOOK_APP_SECRET: ""
+      VK_CLIENT_ID: ""
+      VK_CLIENT_SECRET: ""
+      REDDIT_CLIENT_ID: ""
+      REDDIT_CLIENT_SECRET: ""

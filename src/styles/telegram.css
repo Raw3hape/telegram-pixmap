@@ -1,0 +1,266 @@
+/* Telegram WebApp specific styles */
+
+/* Base styles for Telegram WebApp */
+.telegram-webapp {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Canvas optimizations */
+#gameCanvas {
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Touch device optimizations */
+.touch-device {
+  cursor: default !important;
+}
+
+.touch-device * {
+  cursor: inherit !important;
+}
+
+/* Touch feedback */
+.touched {
+  opacity: 0.7 !important;
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Button optimizations */
+.telegram-webapp button,
+.telegram-webapp .clickable {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px;
+  touch-action: manipulation;
+}
+
+/* Color palette optimization for mobile */
+.telegram-webapp .color-palette {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+  overflow-x: auto;
+  max-width: 90vw;
+  -webkit-overflow-scrolling: touch;
+}
+
+.telegram-webapp .color-palette-item {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.telegram-webapp .color-palette-item.selected {
+  border-color: #fff;
+  transform: scale(1.2);
+}
+
+/* Floating action buttons */
+.telegram-webapp .fab {
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 1000;
+}
+
+.telegram-webapp .fab:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.telegram-webapp .fab.zoom-in {
+  right: 20px;
+  bottom: 140px;
+}
+
+.telegram-webapp .fab.zoom-out {
+  right: 20px;
+  bottom: 80px;
+}
+
+/* Coordinate display */
+.telegram-webapp .coordinates {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: monospace;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Loading states */
+.telegram-webapp .loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.telegram-webapp .loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Reduced motion */
+.reduce-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Hide desktop-only elements */
+.telegram-webapp .desktop-only,
+.telegram-webapp .login-button,
+.telegram-webapp .register-button,
+.telegram-webapp .social-login-buttons {
+  display: none !important;
+}
+
+/* Telegram theme adaptation */
+@media (prefers-color-scheme: dark) {
+  .telegram-webapp {
+    background: #000;
+    color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .telegram-webapp {
+    background: #fff;
+    color: #000;
+  }
+  
+  .telegram-webapp .color-palette {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+  }
+  
+  .telegram-webapp .coordinates {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+  }
+}
+
+/* Landscape orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+  .telegram-webapp .color-palette {
+    bottom: 10px;
+    padding: 5px;
+  }
+  
+  .telegram-webapp .color-palette-item {
+    min-width: 30px;
+    min-height: 30px;
+  }
+  
+  .telegram-webapp .fab {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  
+  .telegram-webapp .fab.zoom-in {
+    bottom: 110px;
+  }
+  
+  .telegram-webapp .fab.zoom-out {
+    bottom: 60px;
+  }
+}
+
+/* Small devices */
+@media (max-width: 320px) {
+  .telegram-webapp .color-palette {
+    gap: 4px;
+    padding: 8px;
+  }
+  
+  .telegram-webapp .color-palette-item {
+    min-width: 32px;
+    min-height: 32px;
+  }
+}
+
+/* Prevent text selection */
+.telegram-webapp * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection in specific areas */
+.telegram-webapp .selectable {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Safe area insets for notched devices */
+.telegram-webapp {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Performance optimizations */
+.telegram-webapp canvas {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
