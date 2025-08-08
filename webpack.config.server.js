@@ -134,7 +134,7 @@ module.exports = ({
         'process.env.NODE_ENV': development ? '"development"' : '"production"',
         'process.env.BROWSER': false,
       }),
-      // Copy Lua scripts
+      // Copy worker scripts
       new CopyPlugin({
         patterns: [
           { from: 'workers', to: 'workers' },
