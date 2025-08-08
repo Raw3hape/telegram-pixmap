@@ -134,6 +134,12 @@ module.exports = ({
         'process.env.NODE_ENV': development ? '"development"' : '"production"',
         'process.env.BROWSER': false,
       }),
+      // Copy Lua scripts
+      new CopyPlugin({
+        patterns: [
+          { from: 'workers', to: 'workers' },
+        ],
+      }),
       // create package.json for deployment
       new GeneratePackageJsonPlugin(basePackageValues, {
         sourcePackageFilenames: [ path.resolve('package.json') ],
